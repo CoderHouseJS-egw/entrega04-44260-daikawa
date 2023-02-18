@@ -8,6 +8,9 @@ Projeto Integrador - Simulador Interativo
     - [Formato](#formato)
     - [Descrição sobre o algoritmo escolhido.](#descrição-sobre-o-algoritmo-escolhido)
     - [Estrutura HTML inicial do projeto](#estrutura-html-inicial-do-projeto)
+  - [Desafio 05 de Javascript - Incorporar objetos](#desafio-05-de-javascript---incorporar-objetos)
+    - [Recomendações](#recomendações)
+    - [Descrição sobre o código realizado](#descrição-sobre-o-código-realizado)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -34,7 +37,16 @@ Algoritmo:
 ### Estrutura HTML inicial do projeto
 Criada estrutura inicial, com navbar, carrossel de boas vindas, cards direcionando o usuário para os registros, footer.
 Usado bootstrap.
-
+## Desafio 05 de Javascript - Incorporar objetos
+A partir dos exemplos mostrados na primeira aula, e em função do tipo de simulador que tiver escolhido, deverá:
+- Criar ao menos um objeto para controlar o funcionamento de seu simulador.
+- Incorporar suas propriedades e seu construtor.
+- Invocar esse objeto em algum momento onde o usuário realizar alguma ação.
+- Utilizar seus métodos.
+### Recomendações
+Reconhecer elementos no simulador cuja informação está composta por mais de um valor e existem operações comuns (funções) para todos os elementos desse tipo e suas propriedades.
+### Descrição sobre o código realizado
+Objeto identificado:
 ## Backlog - implementações pensadas a fazer
 - [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
 - [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
