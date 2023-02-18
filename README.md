@@ -7,6 +7,7 @@ Projeto Integrador - Simulador Interativo
   - [Desafio 04 de Javascript - Simulador Interativo](#desafio-04-de-javascript---simulador-interativo)
     - [Formato](#formato)
     - [Descrição sobre o algoritmo escolhido.](#descrição-sobre-o-algoritmo-escolhido)
+    - [Estrutura HTML inicial do projeto](#estrutura-html-inicial-do-projeto)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -30,10 +31,13 @@ Algoritmo:
 - nesse momento inicial, pede-se qual o objetivo diário de calorias e o objetivo semanal de exercícios para o cadastro de meta
 - a seguir, pede-se a quantidade de calorias da última refeição e se ela treinou ou não
 - foi criada uma função que calcula quantas calorias ela ainda tem que comer até o fim do dia, e quantos treinos faltam para atingir o objetivo da semana.
+### Estrutura HTML inicial do projeto
+Criada estrutura inicial, com navbar, carrossel de boas vindas, cards direcionando o usuário para os registros, footer.
+Usado bootstrap.
 
 ## Backlog - implementações pensadas a fazer
-- [] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
-- [] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
+- [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
+- [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
 
 ## Membros do grupo
 - Erica Daikawa
