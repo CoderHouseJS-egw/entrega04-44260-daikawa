@@ -13,6 +13,7 @@ Página HTML e código fonte em JavaScript.
 Calculadora de calorias e treinos
 - primeiro objetivo é a pessoa fazer o controle de quantas calorias ela come no dia
 - segundo objetivo é o controle da atividade física semanal
+
 Algoritmo:
 - nesse momento inicial, pede-se qual o objetivo diário de calorias e o objetivo semanal de exercícios para o cadastro de meta
 - a seguir, pede-se a quantidade de calorias da última refeição e se ela treinou ou não
