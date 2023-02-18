@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+<<<<<<< Updated upstream
+=======
+
+# macOs and local environment
+.DS_Store
+.vscode/
+>>>>>>> Stashed changes
