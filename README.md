@@ -10,10 +10,17 @@ Com os conhecimentos vistos até o momento, você começará a formular a estrut
 Página HTML e código fonte em JavaScript.
 
 ### Descrição sobre o algoritmo escolhido.
+Calculadora de calorias e treinos
+- primeiro objetivo é a pessoa fazer o controle de quantas calorias ela come no dia
+- segundo objetivo é o controle da atividade física semanal
+Algoritmo:
+- nesse momento inicial, pede-se qual o objetivo diário de calorias e o objetivo semanal de exercícios para o cadastro de meta
+- a seguir, pede-se a quantidade de calorias da última refeição e se ela treinou ou não
+- foi criada uma função que calcula quantas calorias ela ainda tem que comer até o fim do dia, e quantos treinos faltam para atingir o objetivo da semana.
 
-
-#### validações feitas
-
+#### Backlog - implementações pensadas a fazer
+- quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
+- somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
 
 ### Membros do grupo
 - Erica Daikawa
