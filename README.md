@@ -34,19 +34,28 @@ Algoritmo:
 - nesse momento inicial, pede-se qual o objetivo diário de calorias e o objetivo semanal de exercícios para o cadastro de meta
 - a seguir, pede-se a quantidade de calorias da última refeição e se ela treinou ou não
 - foi criada uma função que calcula quantas calorias ela ainda tem que comer até o fim do dia, e quantos treinos faltam para atingir o objetivo da semana.
+
 ### Estrutura HTML inicial do projeto
 Criada estrutura inicial, com navbar, carrossel de boas vindas, cards direcionando o usuário para os registros, footer.
 Usado bootstrap.
+
 ## Desafio 05 de Javascript - Incorporar objetos
 A partir dos exemplos mostrados na primeira aula, e em função do tipo de simulador que tiver escolhido, deverá:
 - Criar ao menos um objeto para controlar o funcionamento de seu simulador.
 - Incorporar suas propriedades e seu construtor.
 - Invocar esse objeto em algum momento onde o usuário realizar alguma ação.
 - Utilizar seus métodos.
+
 ### Recomendações
 Reconhecer elementos no simulador cuja informação está composta por mais de um valor e existem operações comuns (funções) para todos os elementos desse tipo e suas propriedades.
+
 ### Descrição sobre o código realizado
-Objeto identificado:
+- Objeto identificado: usuário (pessoa);
+- Foi criado uma classe Pessoa, com seu devido construtor que é usado para o cadastro;
+- Foi criado o método ```age()``` que pega o dado de data de nascimento do usuário para calcular a idade atual, subtraindo de ```Date()```;
+- Criado o método ```insertData``` para inserir a refeição feita e o treino do dia;
+- Criada a função de ```login/cadastro```, se o usuário diz não ter cadastro, ele fará o cadastro; se diz que tem o cadastro, deverá procurar o usuário. Nesse momento, usuário existente mockado ```Marcelo```.
+
 ## Backlog - implementações pensadas a fazer
 - [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
 - [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
