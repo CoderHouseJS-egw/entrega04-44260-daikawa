@@ -25,13 +25,6 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarScroll">
                     <ul class="navbar-nav me-auto my-2 my-lg-0 gap-2" style="--bs-scroll-height: 100px">
-                        <!-- botão para recarregar o prompt -->
-                        <li class="nav-item px-3">
-                            <button type="button" class="btn btn-outline-success" onClick="recarregarAPagina(true)">
-                                PROMPT<br />Clique Aqui para fazer novamente :)
-                            </button>
-                        </li>
-                        <!-- fim do botão para recarregar o prompt -->
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
                         </li>
@@ -54,21 +47,21 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <form class="d-flex hstack gap-2" role="login">
-                                <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
-                                    placeholder="email">
-                                <input type="password" class="form-control" id="loginPassword1" placeholder="senha">
-                                <button class="btn btn-outline-success" type="submit">
-                                    Entrar
-                                </button>
-                            </form>
-                            <div class="row">
-                                <a class="col-7" href="./cadastro.html">Não possui conta? Cadastre-se aqui</a>
-                                <a class="col-5" href="./esqueci-a-senha.html">Esqueci a senha</a>
-                            </div>
-                        </li>
                     </ul>
+                    <div>
+                        <form class="d-flex hstack gap-2" role="login">
+                            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                                placeholder="email">
+                            <input type="password" class="form-control" id="loginPassword1" placeholder="senha">
+                            <button class="btn btn-outline-success" type="submit">
+                                Entrar
+                            </button>
+                        </form>
+                        <div class="row">
+                            <a class="col-7" href="./cadastro.html">Não possui conta? Cadastre-se aqui</a>
+                            <a class="col-5" href="./esqueci-a-senha.html">Esqueci a senha</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
