@@ -33,8 +33,8 @@ class Pessoa {
     this.calorieGoal = user.calorieGoal;
     this.trainingGoal = user.trainingGoal;
   }
-  /** método age - calcula idade */
-  age() {
+  /** método yearOld - calcula idade */
+  yearOld() {
     const today = new Date();
     const birthDate = new Date(this.bornDate);
     let result = today.getFullYear() - birthDate.getFullYear();
@@ -79,6 +79,7 @@ function login(welcome) {
 
   if (welcome === "s") {
     pessoa0 = new Pessoa(marcelo);
+    pessoa0.age = pessoa0.yearOld();
     alert("Bem-vindo, " + pessoa0.username);
     pessoa0.insertData();
   } else {
@@ -95,11 +96,12 @@ function login(welcome) {
       ),
     };
     pessoa1 = new Pessoa(cadastro);
+    pessoa1.age = pessoa1.yearOld();
     alert(
       "Nome: " +
         pessoa1.username +
         "\nIdade: " +
-        pessoa1.age() +
+        pessoa1.age +
         "\nAltura: " +
         pessoa1.height +
         "\nPeso: " +
