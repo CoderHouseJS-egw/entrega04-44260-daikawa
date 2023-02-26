@@ -52,7 +52,7 @@ Reconhecer elementos no simulador cuja informação está composta por mais de u
 ### Descrição sobre o código realizado
 - Objeto identificado: usuário (pessoa);
 - Foi criado uma classe Pessoa, com seu devido construtor que é usado para o cadastro;
-- Foi criado o método ```age()``` que pega o dado de data de nascimento do usuário para calcular a idade atual, subtraindo de ```Date()```;
+- Foi criado o método ```yearOld()``` que pega o dado de data de nascimento do usuário para calcular a idade atual, subtraindo de ```Date()```;
 - Criado o método ```insertData``` para inserir a refeição feita e o treino do dia;
 - Criada a função de ```login/cadastro```, se o usuário diz não ter cadastro, ele fará o cadastro; se diz que tem o cadastro, deverá procurar o usuário. Nesse momento, usuário existente mockado ```Marcelo```.
 
