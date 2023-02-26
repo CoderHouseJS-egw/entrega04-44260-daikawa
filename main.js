@@ -10,7 +10,7 @@ alert(
   "Controle para Marombeiros\nAplicativo para controle de refeições e exercícios"
 );
 let welcome = prompt("Você já tem cadastro? s/n");
-
+/** usuário pré-existente mockado */
 let marcelo = {
   username: "Marcelo",
   bornDate: "1972/02/14",
@@ -19,6 +19,7 @@ let marcelo = {
   calorieGoal: 1700,
   trainingGoal: 5,
 };
+/** auxiliares */
 let pessoa0 = {};
 let pessoa1 = {};
 
@@ -26,7 +27,6 @@ let pessoa1 = {};
 class Pessoa {
   constructor(user) {
     this.username = user.username;
-    // this.age = user.age; // trocar para data nasc e fazer a conta usando Date
     this.bornDate = user.bornDate;
     this.height = user.height;
     this.weight = user.weight;
@@ -59,7 +59,6 @@ class Pessoa {
     }
     /** primeira função */
     const subtrai = (goal, hoje) => goal - hoje;
-
     let restaCalorias = subtrai(this.calorieGoal, refeicao);
     let restaTreino = subtrai(this.trainingGoal, qtTreino);
 
@@ -75,13 +74,16 @@ class Pessoa {
 }
 /** função de login/cadastro */
 function login(welcome) {
+  /** auxiliar */
   let cadastro = {};
 
   if (welcome === "s") {
+    /** cria novo objeto Pessoa */
     pessoa0 = new Pessoa(marcelo);
+    /** chamadas de método da classe Pessoa */
     pessoa0.age = pessoa0.yearOld();
-    alert("Bem-vindo, " + pessoa0.username);
     pessoa0.insertData();
+    alert("Bem-vindo, " + pessoa0.username);
   } else {
     cadastro = {
       username: prompt("Seu nome: "),
@@ -97,6 +99,7 @@ function login(welcome) {
     };
     pessoa1 = new Pessoa(cadastro);
     pessoa1.age = pessoa1.yearOld();
+    pessoa1.insertData();
     alert(
       "Nome: " +
         pessoa1.username +
@@ -112,7 +115,6 @@ function login(welcome) {
         pessoa1.trainingGoal +
         "\n"
     );
-    pessoa1.insertData();
   }
 }
 
