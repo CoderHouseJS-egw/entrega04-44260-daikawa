@@ -60,12 +60,9 @@ Reconhecer elementos no simulador cuja informação está composta por mais de u
 ### Descrição sobre o código realizado
 - Objeto identificado: usuário (pessoa);
 - Foi criado uma classe Pessoa, com seu devido construtor que é usado para o cadastro;
-<<<<<<< HEAD
 - Foi criado o método ```yearOld()``` que pega o dado de data de nascimento do usuário para calcular a idade atual, subtraindo de ```Date()```;
 - Criado o método ```insertData``` para inserir a refeição feita e o treino do dia;
 - Criada a função de ```login/cadastro```, se o usuário diz não ter cadastro, ele fará o cadastro; se diz que tem o cadastro, deverá procurar o usuário. Nesse momento, usuário existente mockado ```Marcelo```.
-
-=======
 - Foi criado o método ```age()``` que pega o dado de data de nascimento do usuário para calcular a idade atual, subtraindo de ```Date()```;
 - Criado o método ```insertData``` para inserir a refeição feita e o treino do dia;
 - Criada a função de ```login/cadastro```, se o usuário diz não ter cadastro, ele fará o cadastro; se diz que tem o cadastro, deverá procurar o usuário. Nesse momento, usuário existente mockado ```Marcelo```.
@@ -93,6 +90,10 @@ Os Arrays cumprem o papel de listas no programa. Principalmente, os utilizamos p
 ### Para considerar:
 - Estrutura em HTML e CSS, porém o JS avaliado ainda não interage com a estrutura.
 ### Descrição sobre o que foi feito para essa entrega:
+- organização do método insertData(), fazendo com que os valores de calorias e treinos restantes sejam incorporados ao objeto;
+- criada uma função de ordem superior para fazer o cálculo das calorias e treinos restantes;
+- funções e variáveis em inglês
+- saídas em alert(), saída final também em console.log().
 ## Backlog - implementações pensadas a fazer
 - [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
 - [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
