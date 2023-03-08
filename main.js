@@ -11,7 +11,7 @@ alert(
 );
 let welcome = prompt("Você já tem cadastro? s/n");
 /** declarando o array de objetos */
-const pessoas = [];
+const arrUsers = [];
 
 /** usuário pré-existente mockado */
 let marcelo = {
@@ -24,7 +24,7 @@ let marcelo = {
 };
 
 /** primeiro construtor */
-class Pessoa {
+class User {
   constructor(user) {
     this.username = user.username;
     this.bornDate = user.bornDate;
@@ -47,26 +47,32 @@ class Pessoa {
   }
   /** método insertData - insere refeição e treino */
   insertData() {
-    let refeicao = parseInt(
+    let isMeal = parseInt(
       prompt("Quantas calorias vc comeu na sua refeição? ")
     );
-    let treino = prompt("Você treinou hoje? (s/n): ");
-    let qtTreino = 0;
-    if (treino == "s") {
-      qtTreino = +1;
+    this.meal = isMeal;
+    let isTraining = prompt("Você treinou hoje? (s/n): ");
+    let training = 0;
+    if (isTraining == "s") {
+      training = +1;
     } else {
-      qtTreino = +0;
+      training = +0;
     }
-    const subtrai = (goal, hoje) => goal - hoje;
-    let restaCalorias = subtrai(this.calorieGoal, refeicao);
-    let restaTreino = subtrai(this.trainingGoal, qtTreino);
+    /** retornando funções  */
+    const calc = () => {
+      return (a, b) => a - b;
+    };
+    let funcRemainingCal = calc();
+    let funcRemainingTrain = calc();
 
+    this.caloriesLeft = funcRemainingCal(this.calorieGoal, isMeal);
+    this.trainingLeft = funcRemainingTrain(this.trainingGoal, training);
     alert(
       this.username +
         ", você ainda precisa comer " +
-        restaCalorias +
+        this.caloriesLeft +
         " calorias hoje.\nFaltam " +
-        restaTreino +
+        this.trainingLeft +
         " treinos essa semana."
     );
   }
@@ -74,21 +80,21 @@ class Pessoa {
 /** função de login */
 function login(welcome) {
   if (welcome === "s") {
-    /** cria novo objeto Pessoa */
-    let pessoa0 = new Pessoa(marcelo);
-    /** chamadas de método da classe Pessoa */
-    pessoa0.age = pessoa0.yearOld();
-    alert("Bem-vindo, " + pessoa0.username);
-    pessoa0.insertData();
+    /** cria novo objeto User */
+    let user0 = new User(marcelo);
+    /** chamadas de método da classe User */
+    user0.age = user0.yearOld();
+    alert("Bem-vindo, " + user0.username);
+    user0.insertData();
     /** push para o array de pessoas */
-    pessoas.push(pessoa0);
+    arrUsers.push(user0);
   } else {
-    registrarPessoa();
+    registerUser();
   }
 }
 /** função de cadastro */
-const registrarPessoa = () => {
-  let cadastro = {
+const registerUser = () => {
+  let register = {
     username: prompt("Seu nome: "),
     bornDate: prompt("Digite sua data de nascimento no formato YYYY/MM/DD"),
     height: parseInt(prompt("Sua altura em centímetros: ")),
@@ -98,57 +104,85 @@ const registrarPessoa = () => {
       prompt("Digite o seu objetivo de treino semanal em dias: ")
     ),
   };
-  let pessoaAux = new Pessoa(cadastro);
-  pessoaAux.age = pessoaAux.yearOld();
+  let userAux = new User(register);
+  userAux.age = userAux.yearOld();
   /** push para o array de pessoas */
-  pessoas.push(pessoaAux);
+  arrUsers.push(userAux);
   alert(
     "Nome: " +
-      pessoaAux.username +
+      userAux.username +
       "\nIdade: " +
-      pessoaAux.age +
+      userAux.age +
       "\nAltura: " +
-      pessoaAux.height +
+      userAux.height +
       "\nPeso: " +
-      pessoaAux.weight +
+      userAux.weight +
       "\nCalorias Diárias: " +
-      pessoaAux.calorieGoal +
+      userAux.calorieGoal +
       "\nTreinos Semanais: " +
-      pessoaAux.trainingGoal +
+      userAux.trainingGoal +
       "\n"
   );
-  pessoaAux.insertData();
+  userAux.insertData();
 };
 /** função de novo cadastro */
-const novoRegistro = () => {
-  let novaPessoa = prompt("Registrar nova pessoa? s/n");
-  if (novaPessoa === "s") {
-    registrarPessoa();
-    novoRegistro();
+const newRegister = () => {
+  let newUser = prompt("Registrar nova pessoa? s/n");
+  if (newUser === "s") {
+    registerUser();
+    newRegister();
   }
 };
+let names = [];
 /** função que cria um array apenas com os nomes */
-let nomes = [];
-const mostrarNomes = () => {
+const showNames = () => {
   /** array de nomes */
-  const arrayNomes = [];
-  /** percorrendo o array de objetos */
-  for (const pessoa of pessoas) {
-    arrayNomes.push(pessoa.username);
-  }
-  /** método join no array de nomes */
-  nomes = arrayNomes.join(", ");
+  const arrayNames = [];
+  /** percorrendo o array de objetos com forEach() */
+  arrUsers.forEach((user) => {
+    arrayNames.push(user.username);
+  });
+  /** método join() no array de nomes */
+  names = arrayNames.join(", ");
 };
+/** função de busca de alunos usando find() */
+const searchUser = () => {
+  let search = prompt("Digite o nome do aluno para ver seu cadastro atual: ");
+  const result = pessoas.find((objeto) => objeto.username == search);
+  alert(
+    "Aluno: " +
+      result.username +
+      "\nIdade: " +
+      result.age +
+      "\nAltura: " +
+      result.height +
+      "\nPeso: " +
+      result.weight +
+      "\nObjetivo de treinos semanais em dias: " +
+      result.trainingGoal +
+      "\nFaltam " +
+      result.trainingLeft +
+      " treinos" +
+      "\nObjetivo de calorias diárias: " +
+      result.calorieGoal +
+      "\nVocê ainda pode comer " +
+      result.caloriesLeft +
+      "calorias."
+  );
+  console.log("Dados do aluno: ");
+  console.log(result);
+};
+
 /** primeira chamada da função */
 login(welcome);
-novoRegistro();
-mostrarNomes();
+newRegister();
+showNames();
 alert(
-  "Alunos: " + nomes + "\nTemos " + pessoas.length + " alunos cadastrados."
+  "Alunos: " + names + "\nTemos " + arrUsers.length + " alunos cadastrados."
 );
-console.log(pessoas);
+searchUser();
 
-/** função: recarregarAPagina (botão na navbar) */
-const recarregarAPagina = () => {
+/** função: pageReaload() (botão na navbar) */
+const pageReload = () => {
   window.location.reload();
 };
