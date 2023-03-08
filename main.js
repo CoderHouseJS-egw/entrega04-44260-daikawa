@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Incorporar objetos
+ * Incorporar arrays
  * Turma 44260 Javascript
  * Erica Daikawa
  */
@@ -10,6 +10,9 @@ alert(
   "Controle para Marombeiros\nAplicativo para controle de refeições e exercícios"
 );
 let welcome = prompt("Você já tem cadastro? s/n");
+/** declarando o array de objetos */
+const pessoas = [];
+
 /** usuário pré-existente mockado */
 let marcelo = {
   username: "Marcelo",
@@ -19,9 +22,6 @@ let marcelo = {
   calorieGoal: 1700,
   trainingGoal: 5,
 };
-/** auxiliares */
-let pessoa0 = {};
-let pessoa1 = {};
 
 /** primeiro construtor */
 class Pessoa {
@@ -57,7 +57,6 @@ class Pessoa {
     } else {
       qtTreino = +0;
     }
-    /** primeira função */
     const subtrai = (goal, hoje) => goal - hoje;
     let restaCalorias = subtrai(this.calorieGoal, refeicao);
     let restaTreino = subtrai(this.trainingGoal, qtTreino);
@@ -72,54 +71,82 @@ class Pessoa {
     );
   }
 }
-/** função de login/cadastro */
+/** função de login */
 function login(welcome) {
-  /** auxiliar */
-  let cadastro = {};
-
   if (welcome === "s") {
     /** cria novo objeto Pessoa */
-    pessoa0 = new Pessoa(marcelo);
+    let pessoa0 = new Pessoa(marcelo);
     /** chamadas de método da classe Pessoa */
     pessoa0.age = pessoa0.yearOld();
-    pessoa0.insertData();
     alert("Bem-vindo, " + pessoa0.username);
+    pessoa0.insertData();
+    /** push para o array de pessoas */
+    pessoas.push(pessoa0);
   } else {
-    cadastro = {
-      username: prompt("Seu nome: "),
-      bornDate: prompt("Digite sua data de nascimento no formato YYYY/MM/DD"),
-      height: parseInt(prompt("Sua altura em centímetros: ")),
-      weight: parseFloat(prompt("Seu peso: ")).toFixed(3),
-      calorieGoal: parseInt(
-        prompt("Digite o seu objetivo diário de calorias: ")
-      ),
-      trainingGoal: parseInt(
-        prompt("Digite o seu objetivo de treino semanal em dias: ")
-      ),
-    };
-    pessoa1 = new Pessoa(cadastro);
-    pessoa1.age = pessoa1.yearOld();
-    pessoa1.insertData();
-    alert(
-      "Nome: " +
-        pessoa1.username +
-        "\nIdade: " +
-        pessoa1.age +
-        "\nAltura: " +
-        pessoa1.height +
-        "\nPeso: " +
-        pessoa1.weight +
-        "\nCalorias Diárias: " +
-        pessoa1.calorieGoal +
-        "\nTreinos Semanais: " +
-        pessoa1.trainingGoal +
-        "\n"
-    );
+    registrarPessoa();
   }
 }
-
+/** função de cadastro */
+const registrarPessoa = () => {
+  let cadastro = {
+    username: prompt("Seu nome: "),
+    bornDate: prompt("Digite sua data de nascimento no formato YYYY/MM/DD"),
+    height: parseInt(prompt("Sua altura em centímetros: ")),
+    weight: parseFloat(prompt("Seu peso: ")).toFixed(3),
+    calorieGoal: parseInt(prompt("Digite o seu objetivo diário de calorias: ")),
+    trainingGoal: parseInt(
+      prompt("Digite o seu objetivo de treino semanal em dias: ")
+    ),
+  };
+  let pessoaAux = new Pessoa(cadastro);
+  pessoaAux.age = pessoaAux.yearOld();
+  /** push para o array de pessoas */
+  pessoas.push(pessoaAux);
+  alert(
+    "Nome: " +
+      pessoaAux.username +
+      "\nIdade: " +
+      pessoaAux.age +
+      "\nAltura: " +
+      pessoaAux.height +
+      "\nPeso: " +
+      pessoaAux.weight +
+      "\nCalorias Diárias: " +
+      pessoaAux.calorieGoal +
+      "\nTreinos Semanais: " +
+      pessoaAux.trainingGoal +
+      "\n"
+  );
+  pessoaAux.insertData();
+};
+/** função de novo cadastro */
+const novoRegistro = () => {
+  let novaPessoa = prompt("Registrar nova pessoa? s/n");
+  if (novaPessoa === "s") {
+    registrarPessoa();
+    novoRegistro();
+  }
+};
+/** função que cria um array apenas com os nomes */
+let nomes = [];
+const mostrarNomes = () => {
+  /** array de nomes */
+  const arrayNomes = [];
+  /** percorrendo o array de objetos */
+  for (const pessoa of pessoas) {
+    arrayNomes.push(pessoa.username);
+  }
+  /** método join no array de nomes */
+  nomes = arrayNomes.join(", ");
+};
 /** primeira chamada da função */
 login(welcome);
+novoRegistro();
+mostrarNomes();
+alert(
+  "Alunos: " + nomes + "\nTemos " + pessoas.length + " alunos cadastrados."
+);
+console.log(pessoas);
 
 /** função: recarregarAPagina (botão na navbar) */
 const recarregarAPagina = () => {
