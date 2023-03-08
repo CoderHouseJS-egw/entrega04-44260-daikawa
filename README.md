@@ -73,8 +73,8 @@ Reconhecer elementos no simulador cuja informação está composta por mais de u
 Os Arrays cumprem o papel de listas no programa. Principalmente, os utilizamos para agrupar elementos de um mesmo tipo. Sempre que for possível, utilize os métodos disponíveis para trabalhar com eles.
 
 ### Descrição sobre o código realizado
-
->>>>>>> a4c0878 (doc: adiciona informações sobre o desafio 06 arrays)
+- Incorporado um array ao projeto, array pessoas.
+- Alguns métodos incorporados: join, length, uso de for of, e console.log mostrando o array de pessoas.
 ## Backlog - implementações pensadas a fazer
 - [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
 - [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
