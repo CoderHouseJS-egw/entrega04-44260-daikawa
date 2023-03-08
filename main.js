@@ -94,8 +94,11 @@ function login(welcome) {
 }
 /** função de cadastro */
 const registerUser = () => {
+  let inputUser = prompt("Seu nome: ");
+  let capitalized =
+    inputUser.charAt(0).toUpperCase() + inputUser.slice(1).toLowerCase();
   let register = {
-    username: prompt("Seu nome: "),
+    username: capitalized,
     bornDate: prompt("Digite sua data de nascimento no formato YYYY/MM/DD"),
     height: parseInt(prompt("Sua altura em centímetros: ")),
     weight: parseFloat(prompt("Seu peso: ")).toFixed(3),
@@ -147,8 +150,10 @@ const showNames = () => {
 };
 /** função de busca de alunos usando find() */
 const searchUser = () => {
-  let search = prompt("Digite o nome do aluno para ver seu cadastro atual: ");
-  const result = pessoas.find((objeto) => objeto.username == search);
+  let search = prompt(
+    "Digite o nome do aluno para ver seu cadastro atual: "
+  ).toLowerCase();
+  const result = arrUsers.find((obj) => obj.username.toLowerCase() == search);
   alert(
     "Aluno: " +
       result.username +
