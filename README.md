@@ -19,6 +19,9 @@ Projeto Integrador - Simulador Interativo
     - [Objetivos específicos](#objetivos-específicos)
     - [Para considerar:](#para-considerar)
     - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega)
+  - [Desafio 08 de Javascript - Interagir com HTML](#desafio-08-de-javascript---interagir-com-html)
+    - [Recomendações:](#recomendações-2)
+    - [Descrição sobre o código realizado](#descrição-sobre-o-código-realizado-2)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -94,9 +97,21 @@ Os Arrays cumprem o papel de listas no programa. Principalmente, os utilizamos p
 - criada uma função de ordem superior para fazer o cálculo das calorias e treinos restantes;
 - funções e variáveis em inglês
 - saídas em alert(), saída final também em console.log().
+
+## Desafio 08 de Javascript - Interagir com HTML
+### Recomendações:
+Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjunto associado por `class`.
+### Descrição sobre o código realizado
+- Criada a parte de login. referente ao mini formulário de login da navbar superior. Se usados os usuários mockados `marcelo@marcelo.com` ou `erica@erica.com`, nesse momento ele criará um objeto desses mocks para ser usado. Se digitado qualquer outro email, ele pedirá para criar uma conta nova/logar com existente.
+- Criada a parte de cadastro, referente à página de cadastro/nova conta. Ele recebe os dados através do formulário e cria uma nova pessoa.
+- Criada a parte de esqueci minha senha, referente à página de recuperação de senha. Se usados os mesmos usuários mockados dados anteriormente, ele puxa do mock a senha do usuário.
+- Criada a parte de registro de calorias e treinos, referente à página de refeição. Na Inicial há dois cards, um para treinos e um para refeições, ambos levam para o mesmo formulário nesse momento. Para poder fazer uso dessa parte, precisa entrar com um dos usuários no login superior, ou haverá um alert pedindo para fazer o login. Uma vez logado, os inputs de calorias e de treino são adicionados ao objeto do usuário criado. Os inputs de qual refeição e qual alimento ainda não funcionam, o intuito é puxar esses dados através de API no futuro.
+
 ## Backlog - implementações pensadas a fazer
 - [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
 - [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
+- [x] subir uma API de refeições e calorias.
+- [ ] usar API no projeto.
 
 ## Membros do grupo
 - Erica Daikawa
