@@ -10,7 +10,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
-    <!-- <script src='main.js'></script> -->
     <title>Registre sua refeição!</title>
 </head>
 
@@ -48,12 +47,12 @@
                             </ul>
                         </li>
                     </ul>
-                    <div>
+                    <div id="profileUser">
                         <form class="d-flex hstack gap-2" role="login">
-                            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                            <input type="email" class="form-control text-dark" id="loginEmail" aria-describedby="emailHelp"
                                 placeholder="email">
-                            <input type="password" class="form-control" id="loginPassword1" placeholder="senha">
-                            <button class="btn btn-outline-success" type="submit">
+                            <input type="password" class="form-control text-dark" id="loginPassword1" placeholder="senha">
+                            <button class="btn btn-outline-success" type="submit" id="sendLogin">
                                 Entrar
                             </button>
                         </form>
@@ -78,8 +77,8 @@
                             Refeição
                         </label>
                         <div class="col-sm-8">
-                            <select class="form-select" aria-label="Refeição">
-                                <option selected>escolha uma refeição</option>
+                            <select class="form-select text-dark" aria-label="Refeição">
+                                <option value="">-- escolha uma refeição --</option>
                                 <option value="1">desjejum / café da manhã</option>
                                 <option value="2">lanche da manhã</option>
                                 <option value="3">Almoço</option>
@@ -94,8 +93,8 @@
                     <div class="mb-3 row">
                         <label for="selectCategoria" class="col-sm-5 col-form-label">Adicionar alimento</label>
                         <div class="col-sm-7">
-                            <select class="form-select" aria-label="categoria de alimentos">
-                                <option selected>escolha uma categoria</option>
+                            <select class="form-select text-dark" aria-label="categoria de alimentos">
+                                <option value="">-- escolha uma categoria --</option>
                                 <option value="1"> 1 </option>
                                 <option value="2"> 2 </option>
                                 <option value="3"> 3 </option>
@@ -117,23 +116,23 @@
                     <div class="mb-3 row">
                         <label for="inputCalorie" class="col-sm-6 col-form-label">Quantas calorias?</label>
                         <div class="col-sm-6">
-                            <input type="number" class="form-control" id="inputCalorie" placeholder="000">
+                            <input type="number" class="form-control text-dark" id="inputCalorie" placeholder="000">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="selectTraining" class="col-sm-6 col-form-label">Você já treinou hoje?</label>
                         <div class="col-sm-6">
-                            <select class="form-select" aria-label="Treino Hoje">
-                                <option selected>sim ou não</option>
+                            <select class="form-select text-dark" aria-label="Treino Hoje" id="selectTraining">
+                                <option value="">-- sim ou não --</option>
                                 <option value="1"> sim </option>
-                                <option value="1"> ainda não </option>
+                                <option value="0"> ainda não </option>
                             </select>
                         </div>
                     </div>
 
                     <div class="mb-3 row">
                         <div class="col-sm-12">
-                            <button class="btn btn-outline-success col-sm-12" type="submit">
+                            <button class="btn btn-outline-success col-sm-12" type="submit" id="sendMeal">
                                 Cadastrar
                             </button>
                         </div>
@@ -143,6 +142,8 @@
             </div>
         </div>
     </main>
+    <script src='scripts/main.js'></script>
+    <script src='scripts/refeicao.js'></script>
 </body>
 
 </html>
