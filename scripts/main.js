@@ -69,7 +69,10 @@ document.getElementById("sendLogin").onclick = login = (e) => {
     arrUsers.push(user0);
     console.log(arrUsers);
     let container = document.getElementById("profileUser");
-    container.innerHTML = `<h2 >Olá, <input id="profile" value="${user0.username}" /></h2>`;
+    container.innerHTML = `<h2 >
+    <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
+    <button id="profile" disabled value="${user0.username}" class="btn btn-lg btn-dark ">${user0.username}</button>
+    </h2>`;
     let user = undefined;
     user = document.getElementById("profile").value;
     console.log(`usuário: ${user}`);
@@ -83,7 +86,10 @@ document.getElementById("sendLogin").onclick = login = (e) => {
     arrUsers.push(user1);
     console.log(arrUsers);
     let container = document.getElementById("profileUser");
-    container.innerHTML = `<h2 >Olá, <input id="profile" value="${user1.username}" /></h2>`;
+    container.innerHTML = `<h2 >
+    <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
+    <button id="profile" disabled value="${user1.username}" class="btn btn-lg btn-dark ">${user1.username}</button>
+    </h2>`;
     let user = undefined;
     user = document.getElementById("profile").value;
     console.log(`usuário: ${user}`);
