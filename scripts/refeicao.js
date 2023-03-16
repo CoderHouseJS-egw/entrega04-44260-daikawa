@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * DOM
+ * Incorporando Eventos
  * Turma 44260 Javascript
  * Erica Daikawa
  */
@@ -10,8 +10,10 @@ let isMeal = 0;
 let isTraining = 0;
 let result = 0;
 
-/** função de inserir refeição */
-document.getElementById("sendMeal").onclick = registerMeal = (e) => {
+/** função de inserir refeição - evento no botão CADASTRAR */
+let mealForm = document.getElementById("mealForm");
+mealForm.addEventListener("submit", registerMeal);
+function registerMeal(e) {
   e.preventDefault();
   if (arrUsers[0] === undefined) {
     alert(
@@ -45,22 +47,17 @@ document.getElementById("sendMeal").onclick = registerMeal = (e) => {
       arrUsers[result].trainingGoal,
       isTraining
     );
-    alert(
-      arrUsers[result].username +
-        "\n\nObjetivo de calorias diárias: " +
-        arrUsers[result].calorieGoal +
-        "\nVocê comeu " +
-        arrUsers[result].meal +
-        " calorias.\n" +
-        "Você ainda precisa comer " +
-        arrUsers[result].caloriesLeft +
-        " calorias hoje." +
-        "\n\nObjetivo de treinos semanais em dias: " +
-        arrUsers[result].trainingGoal +
-        "\nFaltam " +
-        arrUsers[result].trainingLeft +
-        " treinos essa semana."
-    );
+    /** manipulando a DOM */
+    let container = document.getElementById("mealCard");
+    container.innerHTML = `
+    <p>Olá, ${arrUsers[result].username}!</p>
+    <p>Verifique seus dados:</p>
+    <p>Objetivo de calorias diárias: ${arrUsers[result].calorieGoal}</p>
+    <p>Você comeu: ${arrUsers[result].meal} calorias.</p>
+    <p>Você ainda precisa comer: ${arrUsers[result].caloriesLeft} calorias hoje.</p>
+    <p>Objetivo de treinos semanais em dias: ${arrUsers[result].trainingGoal}</p>
+    <p>Faltam: ${arrUsers[result].trainingLeft} treinos essa semana.</p>
+    `;
     console.log(arrUsers[result]);
   }
-};
+}
