@@ -4,7 +4,7 @@
  * Turma 44260 Javascript
  * Erica Daikawa
  */
-let user;
+let loggedUser;
 const arrUsers = [];
 
 /** usuários pré-existentes mockados */
@@ -82,8 +82,8 @@ document.getElementById("sendLogin").onclick = login = (e) => {
       <button id="profile" disabled value="${newUser.username}" class="btn btn-lg btn-dark ">${newUser.username}</button>
       <button class="btn btn-lg btn-dark btn-outline-success reload" onClick="reloadPage();">Sair</button>
       `;
-    user = document.getElementById("profile").value;
-    console.log(`usuário: ${user}`);
+    loggedUser = document.getElementById("profile").value;
+    console.log(`usuário: ${loggedUser}`);
   }
   /** evento Sair / reload da página */
   document.querySelector(".reload").addEventListener("click", (e) => {
@@ -118,6 +118,7 @@ function registerUser(e) {
   let userAux = new User(register);
   /** push para o array de pessoas */
   arrUsers.push(userAux);
+  userAux.age = userAux.yearOld();
   /** manipulando a DOM */
   let container = document.getElementById("registerCard");
   container.innerHTML = `
