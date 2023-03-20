@@ -118,7 +118,6 @@ function registerUser(e) {
   let userAux = new User(register);
   /** push para o array de pessoas */
   arrUsers.push(userAux);
-  userAux.age = userAux.yearOld();
   /** manipulando a DOM */
   let container = document.getElementById("registerCard");
   container.innerHTML = `

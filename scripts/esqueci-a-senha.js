@@ -14,30 +14,22 @@ function recoveryUser(e) {
   if (forgot === "marcelo@marcelo.com") {
     /** cria novo objeto User */
     let user0 = new User(marcelo);
-    /** chamadas de método da classe User */
-    user0.age = user0.yearOld();
-    /** manipulando a DOM */
-    let container = document.getElementById("recoveryDiv");
-    container.innerHTML = `
-    <p>Olá, ${user0.username}!</p>
-    <p>Sua senha é: ${user0.password} e foi enviada para o seu email ${user0.email}.</p>
-    `;
-    /** push para o array de pessoas */
-    arrUsers.push(user0);
+    forgotLogin(user0);
   } else if (forgot === "erica@erica.com") {
     /** cria novo objeto User */
     let user01 = new User(erica);
-    /** chamadas de método da classe User */
-    user01.age = user01.yearOld();
+    forgotLogin(user01);
+  } else {
+    alert("E-mail não cadastrado.");
+  }
+  function forgotLogin(forgotEmail) {
     /** manipulando a DOM */
     let container = document.getElementById("recoveryDiv");
     container.innerHTML = `
-    <p>Olá, ${user01.username}!</p>
-    <p>Sua senha é: ${user01.password} e foi enviada para o seu email ${user01.email}.</p>
-    `;
+   <p>Olá, ${forgotEmail.username}!</p>
+   <p>Sua senha é: ${forgotEmail.password} e foi enviada para o seu email ${forgotEmail.email}.</p>
+   `;
     /** push para o array de pessoas */
-    arrUsers.push(user01);
-  } else {
-    alert("E-mail não cadastrado.");
+    arrUsers.push(forgotEmail);
   }
 }
