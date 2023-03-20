@@ -22,6 +22,9 @@ Projeto Integrador - Simulador Interativo
   - [Desafio 08 de Javascript - Interagir com HTML](#desafio-08-de-javascript---interagir-com-html)
     - [Recomendações:](#recomendações-2)
     - [Descrição sobre o código realizado](#descrição-sobre-o-código-realizado-2)
+  - [Desafio 09 de Javascript - Incorporar Eventos](#desafio-09-de-javascript---incorporar-eventos)
+    - [Recomendações:](#recomendações-3)
+    - [Descrição sobre o código realizado](#descrição-sobre-o-código-realizado-3)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -107,6 +110,14 @@ Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjun
 - Criada a parte de esqueci minha senha, referente à página de recuperação de senha. Se usados os mesmos usuários mockados dados anteriormente, ele puxa do mock a senha do usuário.
 - Criada a parte de registro de calorias e treinos, referente à página de refeição. Na Inicial há dois cards, um para treinos e um para refeições, ambos levam para o mesmo formulário nesse momento. Para poder fazer uso dessa parte, precisa entrar com um dos usuários no login superior, ou haverá um alert pedindo para fazer o login. Uma vez logado, os inputs de calorias e de treino são adicionados ao objeto do usuário criado. Os inputs de qual refeição e qual alimento ainda não funcionam, o intuito é puxar esses dados através de API no futuro.
 
+## Desafio 09 de Javascript - Incorporar Eventos
+### Recomendações:
+É possível associar mais de um evento a um elemento, também podemos utilizar funções comuns, anônimas e seta para os manipuladores de eventos.
+### Descrição sobre o código realizado
+- Login: criado um botão de SAIR na DOM após o login, e um addEventListener que ao escutar o evento de click, dá um reload na página - para poder logar de novo.;
+- Cadastro: evento já existia desde o desafio anterior, foi refatorado. Agora o cadastro feito aparece na DOM.
+- Esqueci a senha: evento já existia desde o desafio anterior, foi refatorado. Agora o lembrete de senha aparece na DOM.
+- Registro de refeição e treino: evento já existia desde o desafio anterior, foi refatorado. Agora os dados registrados aparecem na DOM.
 ## Backlog - implementações pensadas a fazer
 - [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
 - [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
