@@ -4,7 +4,7 @@
  * Turma 44260 Javascript
  * Erica Daikawa
  */
-
+let user;
 const arrUsers = [];
 
 /** usuários pré-existentes mockados */
@@ -39,6 +39,7 @@ class User {
     this.trainingGoal = user.trainingGoal;
     this.email = user.email;
     this.password = user.password;
+    this.age = this.yearOld();
   }
   /** método yearOld - calcula idade */
   yearOld() {
@@ -61,42 +62,28 @@ document.getElementById("sendLogin").onclick = login = (e) => {
   if (login === "marcelo@marcelo.com") {
     /** cria novo objeto User */
     let user0 = new User(marcelo);
-    /** chamadas de método da classe User */
-    user0.age = user0.yearOld();
-    /** push para o array de pessoas */
-    arrUsers.push(user0);
-    console.log(arrUsers);
-    let container = document.getElementById("profileUser");
-    container.innerHTML = `
-    <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
-    <button id="profile" disabled value="${user0.username}" class="btn btn-lg btn-dark ">${user0.username}</button>
-    <button class="btn btn-lg btn-dark btn-outline-success reload" onClick="reloadPage();">Sair</button>
-    `;
-    let user = undefined;
-    user = document.getElementById("profile").value;
-    console.log(`usuário: ${user}`);
+    helloUser(user0);
   } else if (login === "erica@erica.com") {
     /** cria novo objeto User */
     let user1 = new User(erica);
-    /** chamadas de método da classe User */
-    user1.age = user1.yearOld();
-    /** push para o array de pessoas */
-    arrUsers.push(user1);
-    console.log(arrUsers);
-    let container = document.getElementById("profileUser");
-    /** manipulando a DOM e chamando evento no botão SAIR */
-    container.innerHTML = `
-    <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá,</button>
-    <button id="profile" disabled value="${user1.username}" class="btn btn-lg btn-dark ">${user1.username}!</button>
-    <button class="btn btn-lg btn-dark btn-outline-success reload" onClick="reloadPage();">Sair</button>
-    `;
-    let user = undefined;
-    user = document.getElementById("profile").value;
-    console.log(`usuário: ${user}`);
+    helloUser(user1);
   } else {
     alert(
       "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
     );
+  }
+  function helloUser(newUser) {
+    arrUsers.push(newUser);
+    console.log(arrUsers);
+    /** manipulando a DOM e chamando evento no botão SAIR */
+    let container = document.getElementById("profileUser");
+    container.innerHTML = `
+      <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
+      <button id="profile" disabled value="${newUser.username}" class="btn btn-lg btn-dark ">${newUser.username}</button>
+      <button class="btn btn-lg btn-dark btn-outline-success reload" onClick="reloadPage();">Sair</button>
+      `;
+    user = document.getElementById("profile").value;
+    console.log(`usuário: ${user}`);
   }
   /** evento Sair / reload da página */
   document.querySelector(".reload").addEventListener("click", (e) => {
@@ -129,7 +116,6 @@ function registerUser(e) {
     password: password,
   };
   let userAux = new User(register);
-  userAux.age = userAux.yearOld();
   /** push para o array de pessoas */
   arrUsers.push(userAux);
   /** manipulando a DOM */
