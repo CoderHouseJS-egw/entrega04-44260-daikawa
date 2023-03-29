@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Incorporando Eventos
+ * Segunda Entrega do Projeto Final
  * Turma 44260 Javascript
  * Erica Daikawa
  */
@@ -8,9 +8,20 @@
 /** função de recuperação de senha - evento no botão RECUPERAR MINHA SENHA */
 let passRecovery = document.getElementById("recoveryDiv");
 passRecovery.addEventListener("submit", recoveryUser);
+
 function recoveryUser(e) {
   e.preventDefault();
   let forgot = document.getElementById("forgotEmail").value;
+  /** percorrendo itens do localStorage */
+  let localStorageUser;
+  for (var i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = JSON.parse(localStorage.getItem(key));
+    if (forgot === key) {
+      localStorageUser = value;
+    }
+  }
+
   if (forgot === "marcelo@marcelo.com") {
     /** cria novo objeto User */
     let user0 = new User(marcelo);
@@ -19,6 +30,8 @@ function recoveryUser(e) {
     /** cria novo objeto User */
     let user01 = new User(erica);
     forgotLogin(user01);
+  } else if (forgot === localStorageUser.email) {
+    forgotLogin(localStorageUser);
   } else {
     alert("E-mail não cadastrado.");
   }
