@@ -137,11 +137,15 @@ Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjun
 - Em relação à primeira entrega, já não usamos alert() como saída e prompt() como entrada, agora, modificamos o DOM para as saídas e capturamos os eventos do usuário sobre inputs e botões para as entradas. (já implementados em desafios anteriores, ainda restam alerts apenas para alertas reais como: faça seu login.)
 - Portanto, nessa entrega será focado o armazenamento de dados no Storage e sua recuperação.
 ### Descrição sobre o que foi feito para essa entrega:
--
+- main.js: na função de login, agora percorre os itens do localStorage procurando o email de login. Se encontrado, recupera-se esse usuário. Mantido os dois logins teste, que montam os primeiros objetos de usuário.
+- - na função de cadastro, agora o novo usuário é salvo no localStorage.
+- - função de Olá, user, agora percorre os itens do localStorage para recuperar o usuário.
+- esqueci-a-senha.js: na função de recuperar senha, percorrem-se os itens do localStorage procurando o email de login. Se encontrado, recupera-se a senha desse usuário na DOM.
+- refeicao.js: criado arrays de refeição e treinos. Agora, ambos são salvos no localStorage.
 
 ## Backlog - implementações pensadas a fazer
-- [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
-- [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
+- [x] quando for possível armazenar dados, somar as refeições e poder dizer se o goal de calorias foi atingido ou ultrapassado
+- [x] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
 - [x] subir uma API de refeições e calorias.
 - [ ] usar API no projeto.
 
