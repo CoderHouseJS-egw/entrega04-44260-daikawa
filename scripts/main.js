@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Incorporando Eventos
+ * Segunda Entrega do Projeto Final
  * Turma 44260 Javascript
  * Erica Daikawa
  */
@@ -59,6 +59,15 @@ class User {
 document.getElementById("sendLogin").onclick = login = (e) => {
   e.preventDefault();
   let login = document.getElementById("loginEmail").value;
+  /** percorrendo itens do localStorage */
+  let localStorageUser;
+  for (var i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = JSON.parse(localStorage.getItem(key));
+    if (login === key) {
+      localStorageUser = value;
+    }
+  }
   if (login === "marcelo@marcelo.com") {
     /** cria novo objeto User */
     let user0 = new User(marcelo);
@@ -67,29 +76,15 @@ document.getElementById("sendLogin").onclick = login = (e) => {
     /** cria novo objeto User */
     let user1 = new User(erica);
     helloUser(user1);
+  } else if (login === localStorageUser.email) {
+    helloUser(localStorageUser);
   } else {
     alert(
       "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
     );
   }
-  function helloUser(newUser) {
-    arrUsers.push(newUser);
-    console.log(arrUsers);
-    /** manipulando a DOM e chamando evento no botão SAIR */
-    let container = document.getElementById("profileUser");
-    container.innerHTML = `
-      <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
-      <button id="profile" disabled value="${newUser.username}" class="btn btn-lg btn-dark ">${newUser.username}</button>
-      <button class="btn btn-lg btn-dark btn-outline-success reload" onClick="reloadPage();">Sair</button>
-      `;
-    loggedUser = document.getElementById("profile").value;
-    console.log(`usuário: ${loggedUser}`);
-  }
-  /** evento Sair / reload da página */
-  document.querySelector(".reload").addEventListener("click", (e) => {
-    window.location.reload();
-  });
 };
+
 /** função de cadastro - evento no botão CADASTRAR */
 let registerForm = document.getElementById("registerForm");
 registerForm.addEventListener("submit", registerUser);
@@ -116,8 +111,7 @@ function registerUser(e) {
     password: password,
   };
   let userAux = new User(register);
-  /** push para o array de pessoas */
-  arrUsers.push(userAux);
+  helloUser(userAux);
   /** manipulando a DOM */
   let container = document.getElementById("registerCard");
   container.innerHTML = `
@@ -129,5 +123,34 @@ function registerUser(e) {
     <p>Seu objetivo diário de calorias: ${userAux.calorieGoal}</p>
     <p>Seu objetivo semanal de treinos: ${userAux.trainingGoal}</p>
     `;
-  console.log(arrUsers);
+}
+
+/** função de armazenamento no localStorage */
+function saveLocalStorage() {
+  /** armazenando no localStorage */
+  const saveLocal = (key, value) => {
+    localStorage.setItem(key, value);
+  };
+  for (const user of arrUsers) {
+    saveLocal(user.email, JSON.stringify(user));
+  }
+}
+
+function helloUser(newUser) {
+  /** push para o array de pessoas */
+  arrUsers.push(newUser);
+  saveLocalStorage();
+  /** manipulando a DOM e chamando evento no botão SAIR */
+  let container = document.getElementById("profileUser");
+  container.innerHTML = `
+    <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
+    <button id="profile" disabled value="${newUser.username}" class="btn btn-lg btn-dark ">${newUser.username}</button>
+    <button class="btn btn-lg btn-dark btn-outline-success reload" type="submit" onClick="reloadPage();">Sair</button>
+    `;
+  loggedUser = document.getElementById("profile").value;
+  console.log(`usuário logado: ${loggedUser}`);
+  /** evento Sair / evento no botão SAIR - reload da página */
+  document.querySelector(".reload").addEventListener("click", () => {
+    window.location.reload();
+  });
 }
