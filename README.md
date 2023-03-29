@@ -25,6 +25,11 @@ Projeto Integrador - Simulador Interativo
   - [Desafio 09 de Javascript - Incorporar Eventos](#desafio-09-de-javascript---incorporar-eventos)
     - [Recomendações:](#recomendações-3)
     - [Descrição sobre o código realizado](#descrição-sobre-o-código-realizado-3)
+  - [Segunda Entrega do Projeto Final](#segunda-entrega-do-projeto-final)
+    - [Objetivos gerais:](#objetivos-gerais-1)
+    - [Objetivos específicos:](#objetivos-específicos-1)
+    - [Para considerar:](#para-considerar-1)
+    - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-1)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -118,6 +123,22 @@ Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjun
 - Cadastro: evento já existia desde o desafio anterior, foi refatorado. Agora o cadastro feito aparece na DOM.
 - Esqueci a senha: evento já existia desde o desafio anterior, foi refatorado. Agora o lembrete de senha aparece na DOM.
 - Registro de refeição e treino: evento já existia desde o desafio anterior, foi refatorado. Agora os dados registrados aparecem na DOM.
+
+## Segunda Entrega do Projeto Final
+### Objetivos gerais:
+- Codificar funções de processos essenciais e notificação de resultados por HTML, adicionando interação ao simulador.
+- Ampliar e refinar o fluxo de trabalho do script em termos de captura de eventos, processamento do simulador e notificação de resultados em forma de saídas por HTML, modificando o DOM.
+### Objetivos específicos:
+- Definir eventos a serem manipulados e sua função de resposta.
+- Declarar uma estrutura de dados de tipo JSON para definir dados iniciais a serem processados pelo simulador.
+- Modificar o DOM, seja para definir elementos ao carregar a página ou para realizar saídas de um processamento.
+- Armazenar dados (chave-valor) no Storage e recuperá-los.
+### Para considerar:
+- Em relação à primeira entrega, já não usamos alert() como saída e prompt() como entrada, agora, modificamos o DOM para as saídas e capturamos os eventos do usuário sobre inputs e botões para as entradas. (já implementados em desafios anteriores, ainda restam alerts apenas para alertas reais como: faça seu login.)
+- Portanto, nessa entrega será focado o armazenamento de dados no Storage e sua recuperação.
+### Descrição sobre o que foi feito para essa entrega:
+-
+
 ## Backlog - implementações pensadas a fazer
 - [ ] quando for possível armazenar dados, somar as refeições e dizer se o goal de calorias foi atingido ou ultrapassado
 - [ ] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
