@@ -18,16 +18,13 @@ mealForm.addEventListener("submit", registerMeal);
 
 function registerMeal(e) {
   e.preventDefault();
+  /** usando ternário para verificar se há usuário logado */
+  arrUsers[0] === undefined
+    ? alert(
+        "Primeiramente faça seu login.\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
+      )
+    : (user = document.getElementById("profile").value);
 
-  if (arrUsers[0] === undefined) {
-    alert(
-      "Primeiramente faça seu login.\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
-    );
-  }
-
-  if (document.getElementById("profile").value) {
-    user = document.getElementById("profile").value;
-  }
   /** percorrendo itens do localStorage */
   let localStorageUser;
   for (var i = 0; i < localStorage.length; i++) {
