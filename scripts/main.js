@@ -5,7 +5,6 @@
  * Erica Daikawa
  */
 let userAux = {};
-let loggedUser;
 const arrUsers = [];
 
 /** usuários pré-existentes mockados */
@@ -77,7 +76,6 @@ document.getElementById("sendLogin").onclick = login = (e) => {
     if (login === key) {
       localStorageUser = value;
       localStorageKey = key;
-      console.log("localStorageUser: ", localStorageUser.email);
     }
   }
   /** condicionais para login */
@@ -111,19 +109,19 @@ function registerUser(e) {
   let capitalized =
     inputUser.charAt(0).toUpperCase() + inputUser.slice(1).toLowerCase();
   let bornDate = document.querySelector("#inputBornDate").value;
-  let height = document.querySelector("#inputHeight").value;
-  let weight = document.querySelector("#inputWeight").value;
-  let calorieGoal = document.querySelector("#inputCalorieGoal").value;
-  let trainingGoal = document.querySelector("#inputTrainingGoal").value;
+  let heightValue = document.querySelector("#inputHeight").value;
+  let weightValue = document.querySelector("#inputWeight").value;
+  let calorieGoalValue = document.querySelector("#inputCalorieGoal").value;
+  let trainingGoalValue = document.querySelector("#inputTrainingGoal").value;
   let email = document.querySelector("#inputEmail").value;
   let password = document.querySelector("#inputPassword").value;
   let register = {
     username: capitalized,
     bornDate: bornDate,
-    height: height,
-    weight: weight,
-    calorieGoal: calorieGoal,
-    trainingGoal: trainingGoal,
+    height: heightValue,
+    weight: weightValue,
+    calorieGoal: calorieGoalValue,
+    trainingGoal: trainingGoalValue,
     email: email,
     password: password,
     arrMeal: [],
@@ -131,16 +129,18 @@ function registerUser(e) {
   };
   userAux = new User(register);
   helloUser(userAux);
+  /** desestruturação */
+  const { username, age, height, weight, calorieGoal, trainingGoal } = userAux;
   /** manipulando a DOM */
   let container = document.getElementById("registerCard");
   container.innerHTML = `
-    <p>Olá, ${userAux.username}!</p>
+    <p>Olá, ${username}!</p>
     <p>Verifique seus dados:</p>
-    <p>Idade: ${userAux.age}</p>
-    <p>Altura: ${userAux.height}</p>
-    <p>Peso: ${userAux.weight}</p>
-    <p>Seu objetivo diário de calorias: ${userAux.calorieGoal}</p>
-    <p>Seu objetivo semanal de treinos: ${userAux.trainingGoal}</p>
+    <p>Idade: ${age}</p>
+    <p>Altura: ${height}</p>
+    <p>Peso: ${weight}</p>
+    <p>Seu objetivo diário de calorias: ${calorieGoal}</p>
+    <p>Seu objetivo semanal de treinos: ${trainingGoal}</p>
     `;
 }
 
@@ -166,8 +166,6 @@ function helloUser(newUser) {
     <button id="profile" disabled value="${newUser.username}" class="btn btn-lg btn-dark ">${newUser.username}</button>
     <button class="btn btn-lg btn-dark btn-outline-success reload" type="submit" onClick="reloadPage();">Sair</button>
     `;
-  loggedUser = document.getElementById("profile").value;
-  console.log(`usuário logado: ${loggedUser}`);
   /** evento Sair / evento no botão SAIR - reload da página */
   document.querySelector(".reload").addEventListener("click", () => {
     window.location.reload();
