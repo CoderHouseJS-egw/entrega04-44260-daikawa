@@ -62,8 +62,6 @@ class User {
     return result;
   }
 }
-// new User(marcelo);
-// new User(erica);
 
 /** função de login - evento no botão ENTRAR */
 document.getElementById("sendLogin").onclick = login = (e) => {
@@ -82,6 +80,7 @@ document.getElementById("sendLogin").onclick = login = (e) => {
       console.log("localStorageUser: ", localStorageUser.email);
     }
   }
+  /** condicionais para login */
   if (login !== localStorageKey) {
     if (login === "erica@erica.com") {
       /** cria novo objeto User */
@@ -127,6 +126,8 @@ function registerUser(e) {
     trainingGoal: trainingGoal,
     email: email,
     password: password,
+    arrMeal: [],
+    arrTraining: [],
   };
   userAux = new User(register);
   helloUser(userAux);
