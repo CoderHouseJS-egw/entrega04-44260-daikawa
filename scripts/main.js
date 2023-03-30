@@ -54,10 +54,10 @@ class User {
     const birthDate = new Date(this.bornDate);
     let result = today.getFullYear() - birthDate.getFullYear();
     const month = today.getMonth() - birthDate.getMonth();
-
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+    /** otimizando com operador lógico AND */
+    (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) &&
       result--;
-    }
+
     return result;
   }
 }
@@ -94,8 +94,7 @@ document.getElementById("sendLogin").onclick = login = (e) => {
         "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
       );
     }
-  }
-  if (login === localStorageUser.email) {
+  } else {
     helloUser(localStorageUser);
   }
 };
