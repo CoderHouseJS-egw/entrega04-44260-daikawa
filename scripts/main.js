@@ -4,6 +4,7 @@
  * Turma 44260 Javascript
  * Erica Daikawa
  */
+let userAux = {};
 let loggedUser;
 const arrUsers = [];
 
@@ -15,6 +16,8 @@ let marcelo = {
   weight: 72,
   calorieGoal: 1700,
   trainingGoal: 5,
+  arrMeal: [],
+  arrTraining: [],
   email: "marcelo@marcelo.com",
   password: "monstro",
 };
@@ -25,9 +28,12 @@ let erica = {
   weight: 62,
   calorieGoal: 1500,
   trainingGoal: 3,
+  arrMeal: [],
+  arrTraining: [],
   email: "erica@erica.com",
-  password: "bundananuca",
+  password: "bumbumnanuca",
 };
+
 /** primeiro construtor */
 class User {
   constructor(user) {
@@ -40,6 +46,8 @@ class User {
     this.email = user.email;
     this.password = user.password;
     this.age = this.yearOld();
+    this.arrMeal = user.arrMeal;
+    this.arrTraining = user.arrTraining;
   }
   /** método yearOld - calcula idade */
   yearOld() {
@@ -54,6 +62,8 @@ class User {
     return result;
   }
 }
+// new User(marcelo);
+// new User(erica);
 
 /** função de login - evento no botão ENTRAR */
 document.getElementById("sendLogin").onclick = login = (e) => {
@@ -61,27 +71,35 @@ document.getElementById("sendLogin").onclick = login = (e) => {
   let login = document.getElementById("loginEmail").value;
   /** percorrendo itens do localStorage */
   let localStorageUser;
+  let localStorageKey;
   for (var i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
     let value = JSON.parse(localStorage.getItem(key));
+
     if (login === key) {
       localStorageUser = value;
+      localStorageKey = key;
+      console.log("localStorageUser: ", localStorageUser.email);
     }
   }
-  if (login === "marcelo@marcelo.com") {
-    /** cria novo objeto User */
-    let user0 = new User(marcelo);
-    helloUser(user0);
-  } else if (login === "erica@erica.com") {
-    /** cria novo objeto User */
-    let user1 = new User(erica);
-    helloUser(user1);
-  } else if (login === localStorageUser.email) {
+  if (login !== localStorageKey) {
+    if (login === "erica@erica.com") {
+      /** cria novo objeto User */
+      userAux = new User(erica);
+      helloUser(userAux);
+    }
+    if (login === "marcelo@marcelo.com") {
+      /** cria novo objeto User */
+      userAux = new User(marcelo);
+      helloUser(userAux);
+    } else {
+      alert(
+        "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
+      );
+    }
+  }
+  if (login === localStorageUser.email) {
     helloUser(localStorageUser);
-  } else {
-    alert(
-      "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
-    );
   }
 };
 
@@ -110,7 +128,7 @@ function registerUser(e) {
     email: email,
     password: password,
   };
-  let userAux = new User(register);
+  userAux = new User(register);
   helloUser(userAux);
   /** manipulando a DOM */
   let container = document.getElementById("registerCard");

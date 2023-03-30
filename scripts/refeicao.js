@@ -10,6 +10,8 @@ let isMeal = 0;
 let isTraining = 0;
 let arrMeal = [];
 let arrTraining = [];
+// arrUsers[result].arrMeal = [];
+// arrUsers[result].arrTraining = [];
 let mealSum = 0;
 let trainingSum = 0;
 let result = 0;
@@ -70,10 +72,12 @@ function registerMeal(e) {
     arrUsers[result].caloriesLeft = funcRemainingCal(
       arrUsers[result].calorieGoal,
       mealSum
+      // isMeal
     );
     arrUsers[result].trainingLeft = funcRemainingTrain(
       arrUsers[result].trainingGoal,
       trainingSum
+      // isTraining
     );
 
     // adicionar valores
