@@ -57,14 +57,16 @@ function registerMeal(e) {
     /** insere no array de treinos  */
     arrTraining.push(isTraining);
 
+    /** uso de Spread/REST operator */
+    function sumRegister(...array) {
+      return array.reduce(function (acc, n) {
+        return parseInt(acc) + parseInt(n);
+      }, 0);
+    }
     /** soma as refeições */
-    mealSum = arrMeal.reduce(function (prevVal, elem) {
-      return parseInt(prevVal) + parseInt(elem);
-    }, 0);
+    mealSum = sumRegister(...arrMeal);
     /** soma os treinos */
-    trainingSum = arrTraining.reduce(function (prevVal, elem) {
-      return parseInt(prevVal) + parseInt(elem);
-    }, 0);
+    trainingSum = sumRegister(...arrTraining);
 
     /** retornando funções  */
     const calc = () => {
