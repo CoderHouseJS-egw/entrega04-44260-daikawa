@@ -1,12 +1,17 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Segunda Entrega do Projeto Final
+ * OTIMIZANDO O PROJETO FINAL
  * Turma 44260 Javascript
  * Erica Daikawa
  */
 let userAux = {};
-let loggedUser;
 const arrUsers = [];
+// loggedIn();
+let login;
+let localStorageUser;
+let localStorageKey;
+let key;
+let value;
 
 /** usuários pré-existentes mockados */
 let marcelo = {
@@ -20,6 +25,7 @@ let marcelo = {
   arrTraining: [],
   email: "marcelo@marcelo.com",
   password: "monstro",
+  logged: false,
 };
 let erica = {
   username: "Erica",
@@ -32,6 +38,7 @@ let erica = {
   arrTraining: [],
   email: "erica@erica.com",
   password: "bumbumnanuca",
+  logged: false,
 };
 
 /** primeiro construtor */
@@ -48,6 +55,7 @@ class User {
     this.age = this.yearOld();
     this.arrMeal = user.arrMeal;
     this.arrTraining = user.arrTraining;
+    this.logged = user.logged;
   }
   /** método yearOld - calcula idade */
   yearOld() {
@@ -55,31 +63,45 @@ class User {
     const birthDate = new Date(this.bornDate);
     let result = today.getFullYear() - birthDate.getFullYear();
     const month = today.getMonth() - birthDate.getMonth();
-
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+    /** otimizando com operador lógico AND */
+    (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) &&
       result--;
-    }
+
     return result;
   }
 }
 
-/** função de login - evento no botão ENTRAR */
-document.getElementById("sendLogin").onclick = login = (e) => {
-  e.preventDefault();
-  let login = document.getElementById("loginEmail").value;
+/** verificando usuário logado: percorrendo itens do localStorage */
+for (var i = 0; i < localStorage.length; i++) {
+  key = localStorage.key(i);
+  value = JSON.parse(localStorage.getItem(key));
+
+  setTimeout(() => {
+    if (value.logged) {
+      localStorageUser = value;
+      localStorageKey = key;
+      helloUser(localStorageUser);
+    }
+  }, 30);
+}
+
+function localStorageLoop() {
+  login = document.getElementById("loginEmail").value;
   /** percorrendo itens do localStorage */
-  let localStorageUser;
-  let localStorageKey;
   for (var i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    let value = JSON.parse(localStorage.getItem(key));
+    key = localStorage.key(i);
+    value = JSON.parse(localStorage.getItem(key));
 
     if (login === key) {
       localStorageUser = value;
       localStorageKey = key;
-      console.log("localStorageUser: ", localStorageUser.email);
     }
   }
+}
+/** função de login - evento no botão ENTRAR */
+document.getElementById("sendLogin").onclick = login = (e) => {
+  e.preventDefault();
+  localStorageLoop();
   /** condicionais para login */
   if (login !== localStorageKey) {
     if (login === "erica@erica.com") {
@@ -96,8 +118,7 @@ document.getElementById("sendLogin").onclick = login = (e) => {
         "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
       );
     }
-  }
-  if (login === localStorageUser.email) {
+  } else {
     helloUser(localStorageUser);
   }
 };
@@ -111,36 +132,39 @@ function registerUser(e) {
   let capitalized =
     inputUser.charAt(0).toUpperCase() + inputUser.slice(1).toLowerCase();
   let bornDate = document.querySelector("#inputBornDate").value;
-  let height = document.querySelector("#inputHeight").value;
-  let weight = document.querySelector("#inputWeight").value;
-  let calorieGoal = document.querySelector("#inputCalorieGoal").value;
-  let trainingGoal = document.querySelector("#inputTrainingGoal").value;
+  let heightValue = document.querySelector("#inputHeight").value;
+  let weightValue = document.querySelector("#inputWeight").value;
+  let calorieGoalValue = document.querySelector("#inputCalorieGoal").value;
+  let trainingGoalValue = document.querySelector("#inputTrainingGoal").value;
   let email = document.querySelector("#inputEmail").value;
   let password = document.querySelector("#inputPassword").value;
   let register = {
     username: capitalized,
     bornDate: bornDate,
-    height: height,
-    weight: weight,
-    calorieGoal: calorieGoal,
-    trainingGoal: trainingGoal,
+    height: heightValue,
+    weight: weightValue,
+    calorieGoal: calorieGoalValue,
+    trainingGoal: trainingGoalValue,
     email: email,
     password: password,
     arrMeal: [],
     arrTraining: [],
+    logged: true,
   };
   userAux = new User(register);
   helloUser(userAux);
+  /** desestruturação */
+  const { username, age, height, weight, calorieGoal, trainingGoal } = userAux;
   /** manipulando a DOM */
   let container = document.getElementById("registerCard");
   container.innerHTML = `
-    <p>Olá, ${userAux.username}!</p>
+    <p>Olá, ${username}!</p>
     <p>Verifique seus dados:</p>
-    <p>Idade: ${userAux.age}</p>
-    <p>Altura: ${userAux.height}</p>
-    <p>Peso: ${userAux.weight}</p>
-    <p>Seu objetivo diário de calorias: ${userAux.calorieGoal}</p>
-    <p>Seu objetivo semanal de treinos: ${userAux.trainingGoal}</p>
+    <p>Idade: ${age}</p>
+    <p>Altura: ${height}</p>
+    <p>Peso: ${weight}</p>
+    <p>Seu objetivo diário de calorias: ${calorieGoal}</p>
+    <p>Seu objetivo semanal de treinos: ${trainingGoal}</p>
     `;
 }
 
@@ -158,18 +182,19 @@ function saveLocalStorage() {
 function helloUser(newUser) {
   /** push para o array de pessoas */
   arrUsers.push(newUser);
+  localStorageUser.logged = true;
   saveLocalStorage();
   /** manipulando a DOM e chamando evento no botão SAIR */
   let container = document.getElementById("profileUser");
   container.innerHTML = `
     <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
     <button id="profile" disabled value="${newUser.username}" class="btn btn-lg btn-dark ">${newUser.username}</button>
-    <button class="btn btn-lg btn-dark btn-outline-success reload" type="submit" onClick="reloadPage();">Sair</button>
+    <button class="btn btn-lg btn-dark btn-outline-success reload" type="submit" >Sair</button>
     `;
-  loggedUser = document.getElementById("profile").value;
-  console.log(`usuário logado: ${loggedUser}`);
   /** evento Sair / evento no botão SAIR - reload da página */
   document.querySelector(".reload").addEventListener("click", () => {
+    localStorageUser.logged = false;
+    saveLocalStorage();
     window.location.reload();
   });
 }

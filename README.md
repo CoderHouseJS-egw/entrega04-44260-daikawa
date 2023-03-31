@@ -30,6 +30,8 @@ Projeto Integrador - Simulador Interativo
     - [Objetivos específicos:](#objetivos-específicos-1)
     - [Para considerar:](#para-considerar-1)
     - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-1)
+  - [Otimizando o Projeto Final](#otimizando-o-projeto-final)
+    - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-2)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -143,6 +145,13 @@ Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjun
 - esqueci-a-senha.js: na função de recuperar senha, percorrem-se os itens do localStorage procurando o email de login. Se encontrado, recupera-se a senha desse usuário na DOM.
 - refeicao.js: criado arrays de refeição e treinos. Agora, ambos são salvos no localStorage.
 
+## Otimizando o Projeto Final
+### Descrição sobre o que foi feito para essa entrega:
+- Desestruturação: nos três arquivos js foram implementadas desestruração: 'main.js' (cadastro), 'refeicao.js' (cadastro de refeição e treino), e 'esqueci-a-senha.js' (montando a dom)
+- Operador ternário: usado no script 'refeicao.js' para verificar se há usuário logado
+- Operador AND: código otimizado, substituindo um 'if' dentro na 'main.js'
+- Spread: usado SPREAD operator no script 'refeicao.js'
+- Feedback da Angela aplicado: criada propriedade 'logged', booleana, para verificar se há um usuário logado. Ao clicar em SAIR, ele muda o estado para 'false'.
 ## Backlog - implementações pensadas a fazer
 - [x] quando for possível armazenar dados, somar as refeições e poder dizer se o goal de calorias foi atingido ou ultrapassado
 - [x] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além

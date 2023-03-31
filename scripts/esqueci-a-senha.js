@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Segunda Entrega do Projeto Final
+ * OTIMIZANDO O PROJETO FINAL
  * Turma 44260 Javascript
  * Erica Daikawa
  */
@@ -13,36 +13,40 @@ function recoveryUser(e) {
   e.preventDefault();
   let forgot = document.getElementById("forgotEmail").value;
   /** percorrendo itens do localStorage */
+  let localStorageKey;
   let localStorageUser;
   for (var i = 0; i < localStorage.length; i++) {
     let key = localStorage.key(i);
     let value = JSON.parse(localStorage.getItem(key));
     if (forgot === key) {
+      localStorageKey = key;
       localStorageUser = value;
     }
   }
-
-  if (forgot === "marcelo@marcelo.com") {
-    /** cria novo objeto User */
-    let user0 = new User(marcelo);
-    forgotLogin(user0);
-  } else if (forgot === "erica@erica.com") {
-    /** cria novo objeto User */
-    let user01 = new User(erica);
-    forgotLogin(user01);
-  } else if (forgot === localStorageUser.email) {
-    forgotLogin(localStorageUser);
+  if (forgot !== localStorageKey) {
+    if (forgot === "marcelo@marcelo.com") {
+      /** cria novo objeto User */
+      let user0 = new User(marcelo);
+      forgotLogin(user0);
+    } else if (forgot === "erica@erica.com") {
+      /** cria novo objeto User */
+      let user01 = new User(erica);
+      forgotLogin(user01);
+    } else {
+      alert("E-mail não cadastrado.");
+    }
   } else {
-    alert("E-mail não cadastrado.");
+    forgotLogin(localStorageUser);
   }
+
   function forgotLogin(forgotEmail) {
+    /** desestrutura o login */
+    const { username, email, password } = forgotEmail;
     /** manipulando a DOM */
     let container = document.getElementById("recoveryDiv");
     container.innerHTML = `
-   <p>Olá, ${forgotEmail.username}!</p>
-   <p>Sua senha é: ${forgotEmail.password} e foi enviada para o seu email ${forgotEmail.email}.</p>
+   <p>Olá, ${username}!</p>
+   <p>Sua senha é: ${password} e foi enviada para o seu email ${email}.</p>
    `;
-    /** push para o array de pessoas */
-    arrUsers.push(forgotEmail);
   }
 }
