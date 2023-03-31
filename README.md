@@ -151,6 +151,7 @@ Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjun
 - Operador ternário: usado no script 'refeicao.js' para verificar se há usuário logado
 - Operador AND: código otimizado, substituindo um 'if' dentro na 'main.js'
 - Spread: usado SPREAD operator no script 'refeicao.js'
+- Feedback da Angela aplicado: criada propriedade 'logged', booleana, para verificar se há um usuário logado. Ao clicar em SAIR, ele muda o estado para 'false'.
 ## Backlog - implementações pensadas a fazer
 - [x] quando for possível armazenar dados, somar as refeições e poder dizer se o goal de calorias foi atingido ou ultrapassado
 - [x] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
