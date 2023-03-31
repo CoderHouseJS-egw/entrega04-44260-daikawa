@@ -179,8 +179,8 @@ function saveLocalStorage() {
 
 function helloUser(newUser) {
   /** push para o array de pessoas */
+  newUser.logged = true;
   arrUsers.push(newUser);
-  localStorageUser.logged = true;
   saveLocalStorage();
   /** manipulando a DOM e chamando evento no botão SAIR */
   let container = document.getElementById("profileUser");
@@ -191,7 +191,7 @@ function helloUser(newUser) {
     `;
   /** evento Sair / evento no botão SAIR - reload da página */
   document.querySelector(".reload").addEventListener("click", () => {
-    localStorageUser.logged = false;
+    newUser.logged = false;
     saveLocalStorage();
     window.location.reload();
   });
