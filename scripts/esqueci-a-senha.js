@@ -33,7 +33,11 @@ function recoveryUser(e) {
       let user01 = new User(erica);
       forgotLogin(user01);
     } else {
-      alert("E-mail não cadastrado.");
+      Toastify({
+        text: "Email não encontrado. Clique aqui para criar sua conta!",
+        duration: 5000,
+        destination: "/cadastro.html",
+      }).showToast();
     }
   } else {
     forgotLogin(localStorageUser);
