@@ -76,13 +76,11 @@ for (var i = 0; i < localStorage.length; i++) {
   key = localStorage.key(i);
   value = JSON.parse(localStorage.getItem(key));
 
-  setTimeout(() => {
-    if (value.logged) {
-      localStorageUser = value;
-      localStorageKey = key;
-      helloUser(localStorageUser);
-    }
-  }, 30);
+  if (value.logged) {
+    localStorageUser = value;
+    localStorageKey = key;
+    helloUser(localStorageUser);
+  }
 }
 
 function localStorageLoop() {
