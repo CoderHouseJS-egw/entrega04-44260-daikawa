@@ -6,7 +6,6 @@
  */
 let userAux = {};
 const arrUsers = [];
-// loggedIn();
 let login;
 let localStorageUser;
 let localStorageKey;
@@ -112,9 +111,12 @@ document.getElementById("sendLogin").onclick = login = (e) => {
       userAux = new User(marcelo);
       helloUser(userAux);
     } else {
-      alert(
-        "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
-      );
+      swal({
+        title: "Usuário não encontrado, crie sua conta!",
+        text: "Logins teste:\nmarcelo@marcelo.com\nerica@erica.com",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
     }
   } else {
     helloUser(localStorageUser);
