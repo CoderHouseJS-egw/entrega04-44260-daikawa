@@ -1,11 +1,17 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Segunda Entrega do Projeto Final
+ * OTIMIZANDO O PROJETO FINAL
  * Turma 44260 Javascript
  * Erica Daikawa
  */
 let userAux = {};
 const arrUsers = [];
+// loggedIn();
+let login;
+let localStorageUser;
+let localStorageKey;
+let key;
+let value;
 
 /** usuários pré-existentes mockados */
 let marcelo = {
@@ -19,6 +25,7 @@ let marcelo = {
   arrTraining: [],
   email: "marcelo@marcelo.com",
   password: "monstro",
+  logged: false,
 };
 let erica = {
   username: "Erica",
@@ -31,6 +38,7 @@ let erica = {
   arrTraining: [],
   email: "erica@erica.com",
   password: "bumbumnanuca",
+  logged: false,
 };
 
 /** primeiro construtor */
@@ -47,6 +55,7 @@ class User {
     this.age = this.yearOld();
     this.arrMeal = user.arrMeal;
     this.arrTraining = user.arrTraining;
+    this.logged = user.logged;
   }
   /** método yearOld - calcula idade */
   yearOld() {
@@ -62,22 +71,37 @@ class User {
   }
 }
 
-/** função de login - evento no botão ENTRAR */
-document.getElementById("sendLogin").onclick = login = (e) => {
-  e.preventDefault();
-  let login = document.getElementById("loginEmail").value;
+/** verificando usuário logado: percorrendo itens do localStorage */
+for (var i = 0; i < localStorage.length; i++) {
+  key = localStorage.key(i);
+  value = JSON.parse(localStorage.getItem(key));
+
+  setTimeout(() => {
+    if (value.logged) {
+      localStorageUser = value;
+      localStorageKey = key;
+      helloUser(localStorageUser);
+    }
+  }, 30);
+}
+
+function localStorageLoop() {
+  login = document.getElementById("loginEmail").value;
   /** percorrendo itens do localStorage */
-  let localStorageUser;
-  let localStorageKey;
   for (var i = 0; i < localStorage.length; i++) {
-    let key = localStorage.key(i);
-    let value = JSON.parse(localStorage.getItem(key));
+    key = localStorage.key(i);
+    value = JSON.parse(localStorage.getItem(key));
 
     if (login === key) {
       localStorageUser = value;
       localStorageKey = key;
     }
   }
+}
+/** função de login - evento no botão ENTRAR */
+document.getElementById("sendLogin").onclick = login = (e) => {
+  e.preventDefault();
+  localStorageLoop();
   /** condicionais para login */
   if (login !== localStorageKey) {
     if (login === "erica@erica.com") {
@@ -125,6 +149,7 @@ function registerUser(e) {
     password: password,
     arrMeal: [],
     arrTraining: [],
+    logged: true,
   };
   userAux = new User(register);
   helloUser(userAux);
@@ -157,16 +182,19 @@ function saveLocalStorage() {
 function helloUser(newUser) {
   /** push para o array de pessoas */
   arrUsers.push(newUser);
+  localStorageUser.logged = true;
   saveLocalStorage();
   /** manipulando a DOM e chamando evento no botão SAIR */
   let container = document.getElementById("profileUser");
   container.innerHTML = `
     <button value="Olá," disabled class="btn btn-lg btn-dark ">Olá</button>
     <button id="profile" disabled value="${newUser.username}" class="btn btn-lg btn-dark ">${newUser.username}</button>
-    <button class="btn btn-lg btn-dark btn-outline-success reload" type="submit" onClick="reloadPage();">Sair</button>
+    <button class="btn btn-lg btn-dark btn-outline-success reload" type="submit" >Sair</button>
     `;
   /** evento Sair / evento no botão SAIR - reload da página */
   document.querySelector(".reload").addEventListener("click", () => {
+    localStorageUser.logged = false;
+    saveLocalStorage();
     window.location.reload();
   });
 }

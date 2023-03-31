@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Segunda Entrega do Projeto Final
+ * OTIMIZANDO O PROJETO FINAL
  * Turma 44260 Javascript
  * Erica Daikawa
  */
