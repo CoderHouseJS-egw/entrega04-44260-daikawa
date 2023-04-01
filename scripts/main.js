@@ -1,12 +1,11 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * OTIMIZANDO O PROJETO FINAL
+ * Incorporando Bibliotecas
  * Turma 44260 Javascript
  * Erica Daikawa
  */
 let userAux = {};
 const arrUsers = [];
-// loggedIn();
 let login;
 let localStorageUser;
 let localStorageKey;
@@ -16,7 +15,7 @@ let value;
 /** usuários pré-existentes mockados */
 let marcelo = {
   username: "Marcelo",
-  bornDate: "1972/02/14",
+  bornDate: "1972-02-14",
   height: 172,
   weight: 72,
   calorieGoal: 1700,
@@ -29,7 +28,7 @@ let marcelo = {
 };
 let erica = {
   username: "Erica",
-  bornDate: "1977/09/25",
+  bornDate: "1977-09-25",
   height: 170,
   weight: 62,
   calorieGoal: 1500,
@@ -59,13 +58,14 @@ class User {
   }
   /** método yearOld - calcula idade */
   yearOld() {
-    const today = new Date();
-    const birthDate = new Date(this.bornDate);
-    let result = today.getFullYear() - birthDate.getFullYear();
-    const month = today.getMonth() - birthDate.getMonth();
+    const DateTime = luxon.DateTime;
+    const today = DateTime.now();
+    const birthDate = DateTime.fromISO(this.bornDate);
+    console.log(birthDate);
+    let result = today.year - birthDate.year;
+    const month = today.month - birthDate.month;
     /** otimizando com operador lógico AND */
-    (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) &&
-      result--;
+    (month < 0 || (month === 0 && today.day < today.day)) && result--;
 
     return result;
   }
@@ -112,9 +112,12 @@ document.getElementById("sendLogin").onclick = login = (e) => {
       userAux = new User(marcelo);
       helloUser(userAux);
     } else {
-      alert(
-        "Bem-vindo, crie sua conta!\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
-      );
+      swal({
+        title: "Usuário não encontrado, crie sua conta!",
+        text: "Logins teste:\nmarcelo@marcelo.com\nerica@erica.com",
+        icon: "error",
+        confirmButtonText: "Cool",
+      });
     }
   } else {
     helloUser(localStorageUser);

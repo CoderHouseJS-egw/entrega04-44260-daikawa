@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * OTIMIZANDO O PROJETO FINAL
+ * Incorporando Bibliotecas
  * Turma 44260 Javascript
  * Erica Daikawa
  */
@@ -20,9 +20,12 @@ function registerMeal(e) {
   e.preventDefault();
   /** usando ternário para verificar se há usuário logado */
   arrUsers[0] === undefined
-    ? alert(
-        "Primeiramente faça seu login.\n\nLogins teste:\nmarcelo@marcelo.com\nerica@erica.com"
-      )
+    ? swal({
+        title: "Primeiramente faça seu login.",
+        text: "Logins teste:\nmarcelo@marcelo.com\nerica@erica.com",
+        icon: "error",
+        confirmButtonText: "Cool",
+      })
     : (user = document.getElementById("profile").value);
 
   /** percorrendo itens do localStorage */
