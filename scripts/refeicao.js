@@ -1,6 +1,6 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * OTIMIZANDO O PROJETO FINAL
+ * Incorporando Bibliotecas
  * Turma 44260 Javascript
  * Erica Daikawa
  */
