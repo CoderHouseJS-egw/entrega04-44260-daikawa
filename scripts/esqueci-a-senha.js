@@ -36,7 +36,7 @@ function recoveryUser(e) {
       Toastify({
         text: "Email não encontrado. Clique aqui para criar sua conta!",
         duration: 5000,
-        destination: "/cadastro.html",
+        destination: "cadastro.html",
       }).showToast();
     }
   } else {
