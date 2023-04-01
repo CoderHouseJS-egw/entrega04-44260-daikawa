@@ -32,6 +32,9 @@ Projeto Integrador - Simulador Interativo
     - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-1)
   - [Otimizando o Projeto Final](#otimizando-o-projeto-final)
     - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-2)
+  - [Incorporando Bibliotecas](#incorporando-bibliotecas)
+    - [Aspectos a serem incluídos na entrega:](#aspectos-a-serem-incluídos-na-entrega)
+    - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-3)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -152,11 +155,22 @@ Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjun
 - Operador AND: código otimizado, substituindo um 'if' dentro na 'main.js'
 - Spread: usado SPREAD operator no script 'refeicao.js'
 - Feedback da Angela aplicado: criada propriedade 'logged', booleana, para verificar se há um usuário logado. Ao clicar em SAIR, ele muda o estado para 'false'.
+
+## Incorporando Bibliotecas
+### Aspectos a serem incluídos na entrega:
+- Incorporar uma biblioteca ao projeto de maneira coerente, cuja aplicação seja importante para seu projeto.
+- Justificar sua escolha de acordo com a natureza de seu projeto e a utilidade que a biblioteca selecionada pode oferecer para completá-lo.
+### Descrição sobre o que foi feito para essa entrega:
+- SweetAlert: colocado nos alertas de login (avisa que o usuário não existe), e no alerta do registro de refeição (avisa que o usuário não está logado)
+- Toastify: colocado na parte de esqueci a senha (ao entrar um email não cadastrado, mostra um toast pedindo para criar uma conta)
+- Luxon: colocado no método 'yearOld()' da classe 'User', para manipular data de hoje e data de nascimento (para calcular a idade da pessoa).
+
 ## Backlog - implementações pensadas a fazer
 - [x] quando for possível armazenar dados, somar as refeições e poder dizer se o goal de calorias foi atingido ou ultrapassado
 - [x] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
-- [x] subir uma API de refeições e calorias.
-- [ ] usar API no projeto.
+- [x] subir uma API de refeições e calorias
+- [ ] criar um array de data dentro do usuário, para mostrar calorias e treinos dia a dia
+- [ ] usar API no projeto
 
 ## Membros do grupo
 - Erica Daikawa
