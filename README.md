@@ -35,6 +35,9 @@ Projeto Integrador - Simulador Interativo
   - [Incorporando Bibliotecas](#incorporando-bibliotecas)
     - [Aspectos a serem incluídos na entrega:](#aspectos-a-serem-incluídos-na-entrega)
     - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-3)
+  - [Fetch em seu Projeto](#fetch-em-seu-projeto)
+    - [Instruções:](#instruções)
+    - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-4)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -165,12 +168,27 @@ Geralmente, identificamos um único elemento DOM com o atributo `id` e um conjun
 - Toastify: colocado na parte de esqueci a senha (ao entrar um email não cadastrado, mostra um toast pedindo para criar uma conta)
 - Luxon: colocado no método 'yearOld()' da classe 'User', para manipular data de hoje e data de nascimento (para calcular a idade da pessoa).
 
+## Fetch em seu Projeto
+### Instruções:
+utilize o fetch() para carregar dados em sua aplicação web de forma assíncrona.
+- Você pode consumir uma API que ofereça recursos relevantes para seu app
+- Ou
+- Criar um arquivo .JSON e carregar os dados de sua web app usando o fetch e uma rota relativa.
+### Descrição sobre o que foi feito para essa entrega:
+- Usado fetch() para carregar categorias de alimentos
+- Usado fetch() para carregar alimentos da categoria selecionada
+- Usado fetch() para carregar calorias do alimento selecionado
+- API usada: taco-api
+  https://taco-api.netlify.app/#sobre-o-projeto-taco
+  O projeto TACO (Tabela Brasileira de Composição de Alimentos), coordenado pelo Núcleo de Estudos e Pesquisas em Alimentação (NEPA) da UNICAMP e com financiamento do Ministério da Saúde – MS e Ministério do Desenvolvimento Social e Combate à FOME – MDS é uma iniciativa para proporcionar dados de um grande número de nutrientes em alimentos nacionais e regionais obtidos por meio de amostragem representativa e análises realizadas por laboratórios com competência analítica comprovada por estudos interlaboratoriais, segundo critérios internacionais.
+- API hospedada por mim em https://taco-api.onrender.com/ , desde que o projeto oficial está offline pois as pessoas usavam a API diretamente.
+
 ## Backlog - implementações pensadas a fazer
 - [x] quando for possível armazenar dados, somar as refeições e poder dizer se o goal de calorias foi atingido ou ultrapassado
 - [x] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
 - [x] subir uma API de refeições e calorias
 - [ ] criar um array de data dentro do usuário, para mostrar calorias e treinos dia a dia
-- [ ] usar API no projeto
+- [x] usar API no projeto
 
 ## Membros do grupo
 - Erica Daikawa
