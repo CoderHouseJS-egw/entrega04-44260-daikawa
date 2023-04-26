@@ -38,6 +38,11 @@ Projeto Integrador - Simulador Interativo
   - [Fetch em seu Projeto](#fetch-em-seu-projeto)
     - [Instruções:](#instruções)
     - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-4)
+  - [ENTREGA DO PROJETO FINAL](#entrega-do-projeto-final)
+    - [Objetivos gerais:](#objetivos-gerais-2)
+    - [Objetivos específicos:](#objetivos-específicos-2)
+    - [O projeto final deve incluir:](#o-projeto-final-deve-incluir)
+    - [Descrição sobre o que foi feito para essa entrega:](#descrição-sobre-o-que-foi-feito-para-essa-entrega-5)
   - [Backlog - implementações pensadas a fazer](#backlog---implementações-pensadas-a-fazer)
   - [Membros do grupo](#membros-do-grupo)
   - [Créditos](#créditos)
@@ -183,12 +188,33 @@ utilize o fetch() para carregar dados em sua aplicação web de forma assíncron
   O projeto TACO (Tabela Brasileira de Composição de Alimentos), coordenado pelo Núcleo de Estudos e Pesquisas em Alimentação (NEPA) da UNICAMP e com financiamento do Ministério da Saúde – MS e Ministério do Desenvolvimento Social e Combate à FOME – MDS é uma iniciativa para proporcionar dados de um grande número de nutrientes em alimentos nacionais e regionais obtidos por meio de amostragem representativa e análises realizadas por laboratórios com competência analítica comprovada por estudos interlaboratoriais, segundo critérios internacionais.
 - API hospedada por mim em https://taco-api.onrender.com/ , desde que o projeto oficial está offline pois as pessoas usavam a API diretamente.
 
+## ENTREGA DO PROJETO FINAL
+### Objetivos gerais:
+- Apresentar uma aplicação que utilize Javascript para solucionar um problema real do usuário.
+- Utilizar o Javascript para melhorar a interação e o dinamismo da página, gerando uma interface coerente e atrativa.
+### Objetivos específicos:
+- Contar com uma estrutura de dados clara, baseada em Arrays e Objetos.
+- Utilizar funções, condicionais e iteradores para manipular os dados da aplicação.
+- Gerar e manipular o DOM. Criar visualizações a partir de dados da aplicação web e gerar eventos para responder à interação do usuário. Utilizar alguma biblioteca relevante para o simulador.
+- Utilizar assincronia e fetch para carregar dados estáticos ou consumir uma API.
+### O projeto final deve incluir:
+- [x] Objetos e Arrays. Métodos de Arrays.
+- [x] Funções e condicionais.
+- [x] Geração do DOM de forma dinâmica. Eventos.
+- [x] Sintaxe avançada.
+- [x] Ao menos uma bilioteca de uso relevante para o projeto.
+- [x] Manipulação de promessas com fetch.
+- [x] Carregamento de dados através de um JSON local ou uma API externa
+### Descrição sobre o que foi feito para essa entrega:
+- No cadastro de refeição foi adicionado um campo para escolher o tamanho da porção do alimento em gramas: agora é possível calcular melhor as calorias consumidas.
+- Agora é mostrado também informações sobre proteínas, carboidratos e gorduras na DOM.
 ## Backlog - implementações pensadas a fazer
 - [x] quando for possível armazenar dados, somar as refeições e poder dizer se o goal de calorias foi atingido ou ultrapassado
 - [x] somar os treinos e poder dizer se o goal de treinos foi atingido ou foi além
 - [x] subir uma API de refeições e calorias
-- [ ] criar um array de data dentro do usuário, para mostrar calorias e treinos dia a dia
 - [x] usar API no projeto
+- [ ] criar um array de data dentro do usuário, para mostrar calorias e treinos dia a dia
+- [ ] criar um array de alimentos, para poder detalhar melhor a refeição ingerida.
 
 ## Membros do grupo
 - Erica Daikawa
