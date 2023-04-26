@@ -18,6 +18,14 @@ let result = 0;
 let catValue;
 let foodValue;
 let servingValue;
+let dataCalorie;
+let servingCalorie;
+let dataProtein;
+let servingProtein;
+let dataCarbo;
+let servingCarbo;
+let dataLipid;
+let servingLipid;
 let catSelect = document.querySelector("#category");
 let food = document.querySelector("#food");
 fetch("https://taco-api.onrender.com/api/v1/category")
@@ -63,14 +71,6 @@ async function foodList() {
   });
 }
 async function foodCalorie() {
-  let dataCalorie;
-  let servingCalorie;
-  let dataProtein;
-  let servingProtein;
-  let dataCarbo;
-  let servingCarbo;
-  let dataLipid;
-  let servingLipid;
   let calorieValue = document.querySelector("#inputCalorie");
   isServing = await document.querySelector("#inputServing").value;
   const resp = await fetch(
@@ -121,7 +121,6 @@ async function foodCalorie() {
       <p>Gorduras: ${servingLipid} g</p>
   `;
   isMeal = data[0].description;
-  isMealCal = data[0].attributes.energy.kcal;
 }
 
 /** função de inserir refeição - evento no botão CADASTRAR */
@@ -165,9 +164,9 @@ function registerMeal(e) {
       trainingLeft,
     } = arrUsers[result];
 
-    meal = isMealCal.toFixed(2);
+    meal = servingCalorie;
     /** insere no array de refeições */
-    arrMeal.push(isMealCal);
+    arrMeal.push(servingCalorie);
     /** insere no array de treinos  */
     arrTraining.push(isTraining);
 
