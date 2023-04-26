@@ -1,12 +1,13 @@
 /**
  * Projeto Integrador: Simulador Interativo
- * Incorporando Bibliotecas
+ * Entrega Final
  * Turma 44260 Javascript
  * Erica Daikawa
  */
 
 let user = null;
 let isMeal = "";
+let isServing = 0;
 let isMealCal = 0;
 let isTraining = 0;
 let mealSum = 0;
@@ -14,6 +15,9 @@ let trainingSum = 0;
 let result = 0;
 
 /** fetch taco-api */
+let catValue;
+let foodValue;
+let servingValue;
 let catSelect = document.querySelector("#category");
 let food = document.querySelector("#food");
 fetch("https://taco-api.onrender.com/api/v1/category")
@@ -28,44 +32,27 @@ fetch("https://taco-api.onrender.com/api/v1/category")
       catSelect.append(option);
     });
   });
-
-let catValue;
 function catChange(element) {
   catValue = element.selectedIndex;
   console.log("catValue: ", catValue);
   foodList();
 }
-let foodValue;
 function foodChange(elem) {
   foodValue = elem.value;
   console.log("foodValue: ", foodValue);
   foodCalorie();
 }
-async function foodCalorie() {
-  let calorieValue = document.querySelector("#inputCalorie");
-  const resp = await fetch(
-    "https://taco-api.onrender.com/api/v1/food/" + foodValue
-  );
-  let data = await resp.json();
-  console.log("food data: ", data[0]);
-  calorieValue.innerHTML = `
-      <input
-      type="number"
-      class="form-control text-dark"
-      id="inputCalorie"
-      value="${data[0].attributes.energy.kcal}"/>
-  `;
-  isMeal = data[0].description;
-  isMealCal = data[0].attributes.energy.kcal;
+function servingChange(elem) {
+  servingValue = elem.value;
+  console.log("servingValue: ", servingValue);
+  foodCalorie();
 }
-
 async function foodList() {
   const resp = await fetch(
     "https://taco-api.onrender.com/api/v1/category/" + catValue + "/food"
   );
   let data = await resp.json();
   food.innerHTML = `<option value="">-- escolha um alimento --</option>`;
-
   await data.forEach((item) => {
     const option = document.createElement("option");
     option.innerHTML = `
@@ -74,6 +61,67 @@ async function foodList() {
     option.setAttribute("value", item.id);
     food.append(option);
   });
+}
+async function foodCalorie() {
+  let dataCalorie;
+  let servingCalorie;
+  let dataProtein;
+  let servingProtein;
+  let dataCarbo;
+  let servingCarbo;
+  let dataLipid;
+  let servingLipid;
+  let calorieValue = document.querySelector("#inputCalorie");
+  isServing = await document.querySelector("#inputServing").value;
+  const resp = await fetch(
+    "https://taco-api.onrender.com/api/v1/food/" + foodValue
+  );
+  let data = await resp.json();
+
+  dataCalorie = data[0].attributes.energy.kcal;
+  servingCalorie = (isServing * (dataCalorie / 100)).toFixed(2);
+
+  !data[0].attributes.protein
+    ? (dataProtein = 0)
+    : (dataProtein = data[0].attributes.protein.qty);
+  if (isNaN(dataProtein)) {
+    dataProtein = 0;
+  }
+  servingProtein = (isServing * (dataProtein / 100)).toFixed(2);
+
+  !data[0].attributes.carbohydrate
+    ? (dataCarbo = 0)
+    : (dataCarbo = data[0].attributes.carbohydrate.qty);
+  if (isNaN(dataCarbo)) {
+    dataCarbo = 0;
+  }
+  servingCarbo = (isServing * (dataCarbo / 100)).toFixed(2);
+
+  !data[0].attributes.lipid
+    ? (dataLipid = 0)
+    : (dataLipid = data[0].attributes.lipid.qty);
+  if (isNaN(dataLipid)) {
+    dataLipid = 0;
+  }
+  servingLipid = ((isServing * dataLipid) / 100).toFixed(2);
+
+  /** retorno da API com todos os dados do alimento selecionado */
+  console.log("food data: ", data[0]);
+
+  /** manipulação da DOM com os dados necessários */
+  calorieValue.innerHTML = `
+      <input
+      type="number"
+      class="form-control text-dark"
+      id="inputCalorie"
+      value="${servingCalorie}"/>
+      <p>Mais informações sobre esse alimento:</p>
+      <p>Proteínas: ${servingProtein} g</p>
+      <p>Carboidratos: ${servingCarbo} g</p>
+      <p>Gorduras: ${servingLipid} g</p>
+  `;
+  isMeal = data[0].description;
+  isMealCal = data[0].attributes.energy.kcal;
 }
 
 /** função de inserir refeição - evento no botão CADASTRAR */
@@ -117,7 +165,7 @@ function registerMeal(e) {
       trainingLeft,
     } = arrUsers[result];
 
-    meal = isMealCal;
+    meal = isMealCal.toFixed(2);
     /** insere no array de refeições */
     arrMeal.push(isMealCal);
     /** insere no array de treinos  */
@@ -157,7 +205,7 @@ function registerMeal(e) {
     <p>Verifique seus dados:</p>
     <p>Objetivo de calorias diárias: ${calorieGoal}</p>
     <p>Você comeu agora: ${isMeal}, ${meal} calorias.</p>
-    <p>Você já comeu hoje: ${mealSum}</p>
+    <p>Você já comeu hoje: ${mealSum} calorias</p>
     <p>Você ainda precisa comer: ${caloriesLeft} calorias hoje.</p>
     <p>Objetivo de treinos semanais em dias: ${trainingGoal}</p>
     <p>Faltam: ${trainingLeft} treinos essa semana.</p>
